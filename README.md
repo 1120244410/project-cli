@@ -10,5 +10,4 @@ chalk: 美化命令行
 commander：自定义命令
 cross-spawn：跨平台命令运行
 
-简述原理：
-通过 package.json 的 "main" 字段指定入口文件 index.js
+通过 package.json 的 "main" 字段指定入口文件 index.js，来运行相关命令
