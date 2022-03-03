@@ -2,6 +2,7 @@ const { getRepo, getRepoTag } = require("../lib/repo");
 const utils = require("util");
 const repoHandler = require("download-git-repo");
 const chalk = require("chalk");
+const loading = require("loading-cli");
 const inquirer = require("inquirer");
 const path = require("path");
 
@@ -17,7 +18,7 @@ class Generator {
     const name = await this.getRepos();
     const tag = await this.getRepoTags(name);
     console.log(chalk.green(`you choice template ${name} v${tag}`));
-    await this.download(name, tag);
+    await this.loading("downloading template...", { name, tag });
     console.log("work done");
     process.exit(1);
   }
@@ -53,7 +54,7 @@ class Generator {
     // 3）return 用户选择的名称
     return tag;
   }
-  async download(name, tag) {
+  async download({ name, tag }) {
     // 1）拼接下载地址
     const requestUrl = `1120244410/${name}#${tag}`;
     try {
@@ -64,6 +65,18 @@ class Generator {
       return res;
     } catch (error) {
       console.log(chalk.red(error));
+    }
+  }
+  async loading(msg, form) {
+    const l = loading(msg);
+    l.start();
+    try {
+      const res = await this.download(form);
+      l.stop();
+      return res;
+    } catch (error) {
+      console.log(chalk.res(error));
+      l.stop();
     }
   }
 }
