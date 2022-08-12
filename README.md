@@ -1,6 +1,6 @@
-运行命令 uki-cli 即可启动脚手架
+运行命令 project-cli 即可启动脚手架
 示例：当你需要创建一个项目时，运行以下命令
-uki-cli create my-project
+project-cli create my-project
 
 注：本地调试时，可以运行 npm link 将命令链接到全局
 

@@ -1,7 +1,7 @@
 {
-  "name": "uki-cli",
+  "name": "project-cli",
   "version": "1.0.0",
-  "description": "uki cli",
+  "description": "project cli",
   "main": "index.js",
   "bin": "index.js",
   "scripts": {
